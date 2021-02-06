@@ -1,0 +1,34 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailorderpharmacy_refillservice-deployment
+  labels:
+    app: MailOrderPharmacy_RefillService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: MailOrderPharmacy_RefillService  
+  template:
+    metadata:
+      labels:
+        app: MailOrderPharmacy_RefillService
+    spec:
+      containers:
+      - name: mailorderpharmacy_refillservice
+        image: myfirstazurecr.azurecr.io/orderitemapiimage:Latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: mailorderpharmacyvcsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailorderpharmacy_refillservicevc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: MailOrderPharmacy_RefillService
