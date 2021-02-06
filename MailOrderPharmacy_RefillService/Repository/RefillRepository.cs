@@ -57,7 +57,7 @@ namespace MailOrderPharmacy_RefillService.Repository
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", RefillHelper.SessionToken);
 
-                client.BaseAddress = new Uri("https://localhost:5002/api/");//Target Web Api
+                client.BaseAddress = new Uri("http://52.143.243.31/api/");//Target Web Api
 
                 var responseTask = client.GetAsync("Subscribe/GetSubscriptionDetails/" + refilldue.SubscriptionId);
 
@@ -163,7 +163,7 @@ namespace MailOrderPharmacy_RefillService.Repository
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", RefillHelper.SessionToken);
-                client.BaseAddress = new Uri("https://localhost:5009/api/");//Target Web Api
+                client.BaseAddress = new Uri("http://52.230.228.30/api/");//Target Web Api
 
                 var responseTask = client.GetAsync("DrugsApi/SearchDrugsById/" + detail.DrugId);
 
