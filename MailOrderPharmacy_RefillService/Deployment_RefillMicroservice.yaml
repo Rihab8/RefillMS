@@ -1,4 +1,4 @@
-﻿apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mailorderpharmacy_refillservice-deployment
@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
       - name: mailorderpharmacy_refillservice
-        image: myfirstazurecr.azurecr.io/orderitemapiimage:Latest
+        image: subscriptioncr.azurecr.io/refillmsimage:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:
-      - name: mailorderpharmacyvcsecret
+      - name: mailorderpharmacysvcsecret
 ---
 apiVersion: v1
 kind: Service
